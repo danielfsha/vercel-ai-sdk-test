@@ -64,6 +64,12 @@ import {generateObject} from 'ai'
 import z from "zod";
 
 
+const GOOGLE_GENERATIVE_AI_API_KEY = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+
+if (!GOOGLE_GENERATIVE_AI_API_KEY) {
+  throw new Error("GOOGLE_GEMINI_API not set");
+}
+
 async function main() {
   const result await generateObject({
     model: google("models/gemini-2.0-flash-exp"),
@@ -76,7 +82,7 @@ async function main() {
   })
 
 
-  console.log(result)
+  console.log(result.object)
 }
 
 ```
@@ -87,6 +93,12 @@ async function main() {
 import {google } from "@ai-sdk/google";
 import {streamObject} from 'ai'
 import z from "zod";
+
+const GOOGLE_GENERATIVE_AI_API_KEY = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+
+if (!GOOGLE_GENERATIVE_AI_API_KEY) {
+  throw new Error("GOOGLE_GEMINI_API not set");
+}
 
 async function main() {
   const result await streamObject({
@@ -114,11 +126,11 @@ main()
 import dotenv from "dotenv";
 dotenv.config();
 
-const GOOGLE_GENERATIVE_AI_API_KEY = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-
 import { generateObject, generateText, streamObject, streamText } from "ai";
 import { google } from "@ai-sdk/google";
 import { z } from "zod";
+
+const GOOGLE_GENERATIVE_AI_API_KEY = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
 if (!GOOGLE_GENERATIVE_AI_API_KEY) {
   throw new Error("GOOGLE_GEMINI_API not set");
